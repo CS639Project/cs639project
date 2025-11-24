@@ -12,6 +12,8 @@ Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0Pkzzon
 [Design](https://docs.google.com/document/d/1Ef8q1vMydNfDqfYMBDC8UKjLwdJjtWAEI8JUtbB3YNQ/edit?usp=sharing)
 # Technologies
 Kotlin and Jetpack Compose and the Material Design.
+
 Room or SharedPreferences storage of local data.
+
 Images and icons for UI
 
