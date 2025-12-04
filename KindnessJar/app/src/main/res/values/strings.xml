@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">KindnessJar</string>
-    <!--  Home Screen Text  -->
+
+    <!-- Home Screen Text -->
     <string name="welcome_to">Welcome To</string>
     <string name="kindness_jar">KindnessJar</string>
     <string name="pick_today_note">Pick Today’s Note</string>
+
+    <!-- Progress Screen -->
+    <string name="progress_title">Progress</string>
+    <string name="daily_streak_label">Daily Streak</string>
+    <string name="weekly_completed">3 task completed this week</string>
+
 </resources>
