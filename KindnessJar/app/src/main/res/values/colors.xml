@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Background Colors -->
-    <color name="peach_background">#F8D3B0</color> <!-- adjust to your tone -->
+    <!--  Background Colors  -->
+    <color name="peach_background">#F8D3B0</color>
+    <!--  adjust to your tone  -->
     <color name="button_blue">#9EC7CF</color>
-
-    <!-- Text Colors -->
+    <!--  Text Colors  -->
     <color name="title_black">#222222</color>
-
-    <!-- Progress Screen Colors -->
+    <!--  Progress Screen Colors  -->
     <color name="mint_background">#B8DCD2</color>
     <color name="streak_card_bg">#D8ECE5</color>
-
-    <!-- Box Colors -->
+    <!--  Box Colors  -->
     <color name="box_filled">#4E8A85</color>
     <color name="box_empty">#FFFFFF</color>
     <color name="box_border">#A0A0A0</color>
-
+    <!--  History Screen Colors  -->
+    <color name="history_background">#B8DCD2</color>
+    <color name="history_card_bg">#3A3A3A</color>
+    <color name="history_card_text">#FFFFFF</color>
 </resources>

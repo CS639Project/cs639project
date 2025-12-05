@@ -1,14 +1,19 @@
 <resources>
     <string name="app_name">KindnessJar</string>
-
-    <!-- Home Screen Text -->
+    <!--  Home Screen Text  -->
     <string name="welcome_to">Welcome To</string>
     <string name="kindness_jar">KindnessJar</string>
     <string name="pick_today_note">Pick Today’s Note</string>
-
-    <!-- Progress Screen -->
+    <!--  Progress Screen  -->
     <string name="progress_title">Progress</string>
     <string name="daily_streak_label">Daily Streak</string>
     <string name="weekly_completed">3 task completed this week</string>
-
+    <!--  History Screen  -->
+    <string name="history_title">History</string>
+    <string name="history_item_1_title">Helped Mom Cook</string>
+    <string name="history_item_1_date">22-01-2024</string>
+    <string name="history_item_2_title">Donated Old Clothes</string>
+    <string name="history_item_2_date">23-01-2024</string>
+    <string name="history_item_3_title">Fed a Street Dog</string>
+    <string name="history_item_3_date">24-01-2024</string>
 </resources>
