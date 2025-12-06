@@ -8,12 +8,12 @@
 [Sreenidhi](https://github.com/sreenidhimadireddy/CS639)
 # Idea & Proposal
 Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0PkzzonxHkBUa61tRA2wIsQwBPZ7efK_GI/edit?usp=sharing
-# App Design 
+# Design 
 [Design](https://docs.google.com/document/d/1Ef8q1vMydNfDqfYMBDC8UKjLwdJjtWAEI8JUtbB3YNQ/edit?usp=sharing)
 # Technologies
-Kotlin and Jetpack Compose and the Material Design.
+. Kotlin and Jetpack Compose and the Material Design.
 
-Room or SharedPreferences storage of local data.
+. Room or SharedPreferences storage of local data.
 
-Images and icons for UI
+. Images and icons for UI
 
