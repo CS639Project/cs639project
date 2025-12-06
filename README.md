@@ -1,6 +1,6 @@
 # CS639Project
-# Team 5 project for CS639
-# Team Members
+# Kindness Jar
+# Team
 [Abhinay](https://github.com/Abhi04516/README1/blob/main/README.md)
 
 [Sai Kumar](https://github.com/Saikumar-chintu/CS639)
