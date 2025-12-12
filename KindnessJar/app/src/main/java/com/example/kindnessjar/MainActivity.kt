@@ -23,6 +23,7 @@ import com.example.kindnessjar.screens.HistoryScreen
 import com.example.kindnessjar.screens.ChallengeScreen
 
 import com.example.kindnessjar.ui.components.BottomNavBar
+import com.example.kindnessjar.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
 private fun AppRoot() {
     MaterialTheme {
         val navController = rememberNavController()
+        val viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 
         Scaffold(
             bottomBar = {
@@ -54,16 +56,34 @@ private fun AppRoot() {
                     startDestination = Routes.HOME
                 ) {
                     composable(Routes.HOME) {
-                        HomeScreen(onPickNoteClick = { navController.navigate(Routes.CHALLENGE) })
+                        HomeScreen(onPickNoteClick = {
+                            navController.navigate(Routes.CHALLENGE)
+                        })
                     }
-                    composable(Routes.CHALLENGE) { ChallengeScreen() }
-                    composable(Routes.PROGRESS) { ProgressScreen() }
-                    composable(Routes.HISTORY) { HistoryScreen() }
+
+                    composable(Routes.CHALLENGE) {
+                        ChallengeScreen(
+                            todayChallenge = viewModel.todayChallenge,
+                            onMarkCompleted = {
+                                viewModel.markTodayCompleted()
+                                navController.popBackStack()
+                            }
+                        )
+                    }
+
+                    composable(Routes.PROGRESS) {
+                        ProgressScreen(
+                            streak = viewModel.streak,
+                            weeklyCompleted = viewModel.weeklyCompleted
+                        )
+                    }
+
+                    composable(Routes.HISTORY) {
+                        HistoryScreen(historyList = viewModel.history)
+                    }
                 }
             }
         }
-
     }
 }
-
 
