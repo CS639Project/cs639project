@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -17,9 +18,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kindnessjar.R
+import com.example.kindnessjar.viewmodel.HistoryItem
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun HistoryScreen() {
+fun HistoryScreen(historyList: StateFlow<List<HistoryItem>>) {
+
+    val history = historyList.collectAsState().value
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -43,21 +49,13 @@ fun HistoryScreen() {
                 color = Color.Black
             )
 
-            // Cards Section
-            HistoryCard(
-                title = stringResource(id = R.string.history_item_1_title),
-                date = stringResource(id = R.string.history_item_1_date)
-            )
-
-            HistoryCard(
-                title = stringResource(id = R.string.history_item_2_title),
-                date = stringResource(id = R.string.history_item_2_date)
-            )
-
-            HistoryCard(
-                title = stringResource(id = R.string.history_item_3_title),
-                date = stringResource(id = R.string.history_item_3_date)
-            )
+            // Dynamic Cards Section
+            history.forEach { item ->
+                HistoryCard(
+                    title = item.title,
+                    date = item.date
+                )
+            }
 
             Spacer(modifier = Modifier.height(40.dp))
         }
