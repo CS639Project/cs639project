@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,9 +16,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kindnessjar.R
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun ProgressScreen() {
+fun ProgressScreen(
+    streak: StateFlow<Int>,
+    weeklyCompleted: StateFlow<Int>
+) {
+    val streakValue = streak.collectAsState().value
+    val weekly = weeklyCompleted.collectAsState().value
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -57,19 +65,18 @@ fun ProgressScreen() {
                         color = Color.Black
                     )
                     Text(
-                        text = "3",
+                        text = streakValue.toString(),   // <-- dynamic
                         fontSize = 40.sp,
                         color = Color.Black
                     )
                 }
             }
 
-            // Weekly Progress Boxes (static for now)
+            // Weekly Progress Boxes (dynamic)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                val filledBoxes = 3
 
                 repeat(7) { index ->
-                    val isFilled = index < filledBoxes
+                    val isFilled = index < weekly
 
                     Box(
                         modifier = Modifier
@@ -90,12 +97,13 @@ fun ProgressScreen() {
                 }
             }
 
-            // Weekly completed label
+            // Weekly completed label (dynamic)
             Text(
-                text = stringResource(id = R.string.weekly_completed),
+                text = "$weekly task completed this week",
                 fontSize = 16.sp,
                 color = Color.Black
             )
         }
     }
 }
+
