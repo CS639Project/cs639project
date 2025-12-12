@@ -1,89 +1,100 @@
-package com.example.kindnessjar
+package com.example.kindnessjar.screens
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.rememberNavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-
-import com.example.kindnessjar.ui.theme.KindnessJarTheme
-
-import com.example.kindnessjar.navigation.Routes
-import com.example.kindnessjar.screens.HomeScreen
-import com.example.kindnessjar.screens.ProgressScreen
-import com.example.kindnessjar.screens.HistoryScreen
-import com.example.kindnessjar.screens.ChallengeScreen
-
-import com.example.kindnessjar.ui.components.BottomNavBar
-import com.example.kindnessjar.viewmodel.MainViewModel
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            KindnessJarTheme {
-                AppRoot()
-            }
-        }
-    }
-}
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.kindnessjar.R
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-private fun AppRoot() {
-    MaterialTheme {
-        val navController = rememberNavController()
-        val viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+fun ChallengeScreen(
+    todayChallenge: StateFlow<String>,
+    onMarkCompleted: () -> Unit
+) {
+    val challengeText = todayChallenge.collectAsState().value
 
-        Scaffold(
-            bottomBar = {
-                val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-                if (currentRoute != Routes.CHALLENGE) {
-                    BottomNavBar(navController)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.challenge_background)),
+        contentAlignment = Alignment.TopCenter
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(30.dp),
+            modifier = Modifier.padding(top = 40.dp)
+        ) {
+
+            // Title
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = stringResource(id = R.string.challenge_title_welcome),
+                    fontSize = 26.sp,
+                    color = Color.Black
+                )
+                Text(
+                    text = stringResource(id = R.string.challenge_title_appname),
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+            }
+
+            // Challenge Card
+            Surface(
+                shape = RoundedCornerShape(20.dp),
+                color = colorResource(id = R.color.challenge_card_bg),
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .width(280.dp)
+                    .height(180.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = challengeText,   // ← FROM VIEWMODEL
+                        fontSize = 22.sp,
+                        color = Color.Black
+                    )
                 }
             }
-        ) { padding ->
-            Box(modifier = Modifier.padding(padding)) {
-                NavHost(
-                    navController = navController,
-                    startDestination = Routes.HOME
-                ) {
-                    composable(Routes.HOME) {
-                        HomeScreen(onPickNoteClick = {
-                            navController.navigate(Routes.CHALLENGE)
-                        })
-                    }
 
-                    composable(Routes.CHALLENGE) {
-                        ChallengeScreen(
-                            todayChallenge = viewModel.todayChallenge,
-                            onMarkCompleted = {
-                                viewModel.markTodayCompleted()
-                                navController.popBackStack()
-                            }
-                        )
-                    }
-
-                    composable(Routes.PROGRESS) {
-                        ProgressScreen(
-                            streak = viewModel.streak,
-                            weeklyCompleted = viewModel.weeklyCompleted
-                        )
-                    }
-
-                    composable(Routes.HISTORY) {
-                        HistoryScreen(historyList = viewModel.history)
-                    }
-                }
+            // Button
+            Button(
+                onClick = { onMarkCompleted() },   // ← CALL VIEWMODEL ACTION
+                shape = RoundedCornerShape(40.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.challenge_button_bg)
+                ),
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .width(280.dp)
+                    .height(70.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.mark_as_completed),
+                    fontSize = 20.sp,
+                    color = Color.Black
+                )
             }
         }
     }
 }
-

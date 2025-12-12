@@ -8,6 +8,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,9 +18,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.kindnessjar.R
+import kotlinx.coroutines.flow.StateFlow
 
 @Composable
-fun ChallengeScreen() {
+fun ChallengeScreen(
+    todayChallenge: StateFlow<String>,
+    onMarkCompleted: () -> Unit
+) {
+    val challengeText = todayChallenge.collectAsState().value
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -32,7 +39,7 @@ fun ChallengeScreen() {
             modifier = Modifier.padding(top = 40.dp)
         ) {
 
-            // Title Section
+            // Title
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = stringResource(id = R.string.challenge_title_welcome),
@@ -63,7 +70,7 @@ fun ChallengeScreen() {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = stringResource(id = R.string.challenge_today_note),
+                        text = challengeText,   // ← FROM VIEWMODEL
                         fontSize = 22.sp,
                         color = Color.Black
                     )
@@ -72,7 +79,7 @@ fun ChallengeScreen() {
 
             // Button
             Button(
-                onClick = { /* Will add logic later */ },
+                onClick = { onMarkCompleted() },   // ← CALL VIEWMODEL ACTION
                 shape = RoundedCornerShape(40.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(id = R.color.challenge_button_bg)
