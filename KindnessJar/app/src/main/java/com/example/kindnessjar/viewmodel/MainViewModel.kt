@@ -3,47 +3,51 @@ package com.example.kindnessjar.viewmodel
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.kindnessjar.repository.ChallengeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class MainViewModel : ViewModel() {
 
-    // Fake temporary challenge for UI-only stage
+    lateinit var repository: ChallengeRepository
+
     private val _todayChallenge = MutableStateFlow("Feed a street dog today")
     val todayChallenge: StateFlow<String> = _todayChallenge
 
-    // Fake streak (temporary)
-    private val _streak = MutableStateFlow(3)
+    private val _streak = MutableStateFlow(0)
     val streak: StateFlow<Int> = _streak
 
-    // Fake weekly progress boxes (temporary)
-    private val _weeklyCompleted = MutableStateFlow(3)
+    private val _weeklyCompleted = MutableStateFlow(0)
     val weeklyCompleted: StateFlow<Int> = _weeklyCompleted
 
-    // Fake history list (temporary)
-    private val _history = MutableStateFlow(
-        listOf(
-            HistoryItem("Helped Mom Cook", "22-01-2024"),
-            HistoryItem("Donated Old Clothes", "23-01-2024"),
-            HistoryItem("Fed a Street Dog", "24-01-2024")
-        )
-    )
+    private val _history = MutableStateFlow<List<HistoryItem>>(emptyList())
     val history: StateFlow<List<HistoryItem>> = _history
 
-    // Later this will save to Room DB
     @RequiresApi(Build.VERSION_CODES.O)
     fun markTodayCompleted() {
         val today = LocalDate.now().toString()
+        val text = _todayChallenge.value
 
-        val newItem = HistoryItem(_todayChallenge.value, today)
-        val current = _history.value.toMutableList()
+        viewModelScope.launch {
+            repository.saveCompleted(text, today)
+            loadHistoryFromDb()
 
-        current.add(0, newItem) // add new entry at top
+            // Update streak + weekly
+            _streak.value = _streak.value + 1
+            _weeklyCompleted.value = _weeklyCompleted.value + 1
+        }
+    }
 
-        _history.value = current
-        _streak.value += 1 // simple fake logic
-        _weeklyCompleted.value += 1
+    fun loadHistoryFromDb() {
+        viewModelScope.launch {
+            val items = repository.getHistory()
+            _history.value = items.map {
+                HistoryItem(it.challenge, it.date)
+            }
+        }
     }
 }
 

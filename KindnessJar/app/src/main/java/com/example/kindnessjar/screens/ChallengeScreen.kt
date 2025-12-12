@@ -39,7 +39,7 @@ fun ChallengeScreen(
             modifier = Modifier.padding(top = 40.dp)
         ) {
 
-            // Title
+            // Screen Title
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = stringResource(id = R.string.challenge_title_welcome),
@@ -70,16 +70,16 @@ fun ChallengeScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = challengeText,   // ← FROM VIEWMODEL
+                        text = challengeText,
                         fontSize = 22.sp,
                         color = Color.Black
                     )
                 }
             }
 
-            // Button
+            // Mark as Completed Button
             Button(
-                onClick = { onMarkCompleted() },   // ← CALL VIEWMODEL ACTION
+                onClick = { onMarkCompleted() },
                 shape = RoundedCornerShape(40.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(id = R.color.challenge_button_bg)
