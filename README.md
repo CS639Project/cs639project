@@ -12,23 +12,28 @@ Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0Pkzzon
 # Design 
 [Design](https://docs.google.com/document/d/1Ef8q1vMydNfDqfYMBDC8UKjLwdJjtWAEI8JUtbB3YNQ/edit?usp=sharing)
 # Major Features
-Random kindness challenge that was created daily.
-Mark task as completed and log date.
-Streak or weekly overview screen.
-View the history of the challenges achieved.
-Reminder notification can be optional.
+. Random kindness challenge that was created daily.
+. Mark task as completed and log date.
+. Streak or weekly overview screen.
+. View the history of the challenges achieved.
+. Reminder notification can be optional.
 # Technologies
 . Kotlin and Jetpack Compose and the Material Design.
-
 . Room or SharedPreferences storage of local data.
-
 . Images and icons for UI
 # Install app
 [Download Kindnessjar](https://github.com/CS639Project/cs639project/releases/tag/v1.0
 )
-# ScreenShots
-<img width="1080" height="2400" alt="Homescreen" src="https://github.com/user-attachments/assets/d5c7d30f-da9b-47cd-b4dd-a9079b17c08a" />
+# Screen Shots 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c8096352-285f-4105-903f-418bd2c44958" width="300" alt="Homescreen"/>
+  <img src="https://github.com/user-attachments/assets/825b999f-cc3a-48a1-aa63-622b732e834b" width="300" alt="Challenge Screen"/>
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/baf06f21-fa05-4f9d-aaf3-3deea42d3f6" width="300" alt="History Screen"/>
+  <img src="https://github.com/user-attachments/assets/e394a234-3de2-45d1-8885-c8a39695c3aa" width="300" alt="Progress Screen"/>
+</p>
 # Demo video 
 [KindnessJar](https://youtube.com/shorts/pqofDQeWFHY?feature=share)
 
