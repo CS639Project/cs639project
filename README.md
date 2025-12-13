@@ -26,14 +26,15 @@ Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0Pkzzon
 )
 # Screen Shots 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c8096352-285f-4105-903f-418bd2c44958" width="300" alt="Home Screen"/>
-  <img src="https://github.com/user-attachments/assets/825b999f-cc3a-48a1-aa63-622b732e834b" width="300" alt="Challenge Screen"/>
+  <img src="images/home.png" width="300"/>
+  <img src="images/challenge.png" width="300"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/baf06f21-fa05-4f9d-aaf3-3deea42d3f6" width="300" alt="History Screen"/>
-  <img src="https://github.com/user-attachments/assets/e394a234-3de2-45d1-8885-c8a39695c3aa" width="300" alt="Progress Screen"/>
+  <img src="images/history.png" width="300"/>
+  <img src="images/progress.png" width="300"/>
 </p>
+
 
 # Demo video 
 [KindnessJar](https://youtube.com/shorts/pqofDQeWFHY?feature=share)
