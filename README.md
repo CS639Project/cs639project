@@ -18,5 +18,5 @@ Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0Pkzzon
 
 . Images and icons for UI
 # Demo video 
-[KindnessJar]https://youtube.com/shorts/pqofDQeWFHY?feature=share
+[KindnessJar](https://youtube.com/shorts/pqofDQeWFHY?feature=share)
 
