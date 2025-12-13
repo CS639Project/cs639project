@@ -1,5 +1,6 @@
 # CS639Project
 # Kindness Jar
+This app helps improve emotional well-being and social connection through simple daily kindness challenges. It is created for people who are experiencing anxiety or emotional health concerns, encouraging positive habits and supportive interactions.
 # Team
 [Abhinay](https://github.com/Abhi04516/README1/blob/main/README.md)
 
