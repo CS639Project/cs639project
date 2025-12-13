@@ -1,53 +1,59 @@
 package com.example.kindnessjar.ui.components
 
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.kindnessjar.navigation.Routes
 
+// ICON IMPORTS
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ShowChart
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.History
+
 @Composable
 fun BottomNavBar(navController: NavHostController) {
 
-    // Observe current screen
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination: NavDestination? = navBackStackEntry?.destination
-
-    // Define nav items in your requested order
-    val navItems = listOf(
-        Routes.PROGRESS,   // LEFT
-        Routes.HOME,       // CENTER
-        Routes.HISTORY     // RIGHT
+    val items = listOf(
+        NavItem("Progress", Routes.PROGRESS, Icons.AutoMirrored.Filled.ShowChart),
+        NavItem("Home", Routes.HOME, Icons.Filled.Home),
+        NavItem("History", Routes.HISTORY, Icons.Filled.History)
     )
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = Color(0xFFF8F8F8)
+    ) {
+        val currentRoute = navController
+            .currentBackStackEntryAsState()
+            .value
+            ?.destination
+            ?.route
 
-        navItems.forEach { route ->
-
+        items.forEach { item ->
             NavigationBarItem(
-                selected = currentDestination?.hierarchy?.any { it.route == route } == true,
+                selected = currentRoute == item.route,
                 onClick = {
-                    if (currentDestination?.route != route) {
-                        navController.navigate(route) {
-                            launchSingleTop = true
-                            popUpTo(Routes.HOME) { inclusive = false }
-                        }
+                    navController.navigate(item.route) {
+                        launchSingleTop = true
+                        popUpTo(Routes.HOME) { inclusive = false }
                     }
                 },
-                icon = {},
-                label = {
-                    Text(
-                        when (route) {
-                            Routes.PROGRESS -> "Progress"
-                            Routes.HOME -> "Home"
-                            Routes.HISTORY -> "History"
-                            else -> ""
-                        }
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.label
                     )
-                }
+                },
+                alwaysShowLabel = false
             )
         }
     }
 }
+
+data class NavItem(
+    val label: String,
+    val route: String,
+    val icon: androidx.compose.ui.graphics.vector.ImageVector
+)
