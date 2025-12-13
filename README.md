@@ -25,16 +25,10 @@ Idea & Proposal for project:https://docs.google.com/document/d/18LbS5xYba0Pkzzon
 [Download Kindnessjar](https://github.com/CS639Project/cs639project/releases/tag/v1.0
 )
 # Screen Shots 
-<p align="center">
-  <img src="images/home.png" width="300"/>
-  <img src="images/challenge.png" width="300"/>
-</p>
-
-<p align="center">
-  <img src="images/history.png" width="300"/>
-  <img src="images/progress.png" width="300"/>
-</p>
-
+<img width="400" height="600" alt="Homescreen" src="https://github.com/user-attachments/assets/cfb10fad-28f3-40b5-b8fc-134aa0187fd0" />
+<img width="400" height="600" alt="Challengescreen" src="https://github.com/user-attachments/assets/759c6b7b-d93a-4feb-9134-567c2e77fafa" />
+<img width="400" height="600" alt="Historyscreen" src="https://github.com/user-attachments/assets/08d86904-0a4d-4a87-8e61-b7c42cfc3391" />
+<img width="400" height="600" alt="Progressscreen" src="https://github.com/user-attachments/assets/a2149f4e-c197-4632-ab6a-ab628c392fae" />
 
 # Demo video 
 [KindnessJar](https://youtube.com/shorts/pqofDQeWFHY?feature=share)
