@@ -1,24 +1,42 @@
 <resources>
     <string name="app_name">KindnessJar</string>
-    <!--  Home Screen Text  -->
+
+    <!-- Home Screen Text -->
     <string name="welcome_to">Welcome To</string>
     <string name="kindness_jar">KindnessJar</string>
     <string name="pick_today_note">Pick Today’s Note</string>
-    <!--  Progress Screen  -->
+
+    <!-- Progress Screen -->
     <string name="progress_title">Progress</string>
     <string name="daily_streak_label">Daily Streak</string>
-    <string name="weekly_completed">3 task completed this week</string>
-    <!--  History Screen  -->
+    <!--    <string name="weekly_completed">3 task completed this week</string>-->
+
+    <!-- History Screen -->
     <string name="history_title">History</string>
-    <string name="history_item_1_title">Helped Mom Cook</string>
-    <string name="history_item_1_date">22-01-2024</string>
-    <string name="history_item_2_title">Donated Old Clothes</string>
-    <string name="history_item_2_date">23-01-2024</string>
-    <string name="history_item_3_title">Fed a Street Dog</string>
-    <string name="history_item_3_date">24-01-2024</string>
-    <!--  Challenge Screen  -->
+    <!--    <string name="history_item_1_title">Helped Mom Cook</string>-->
+    <!--    <string name="history_item_1_date">22&#8211;01&#8211;2024</string>-->
+    <!--    <string name="history_item_2_title">Donated Old Clothes</string>-->
+    <!--    <string name="history_item_2_date">23&#8211;01&#8211;2024</string>-->
+    <!--    <string name="history_item_3_title">Fed a Street Dog</string>-->
+    <!--    <string name="history_item_3_date">24&#8211;01&#8211;2024</string>-->
+
+    <!-- Challenge Screen -->
     <string name="challenge_title_welcome">Welcome To</string>
     <string name="challenge_title_appname">KindnessJar</string>
-    <string name="challenge_today_note">Feed a street dog today</string>
+    <!--    <string name="challenge_today_note">Feed a street dog today</string>-->
     <string name="mark_as_completed">Mark as Completed</string>
+
+    <string-array name="challenge_list">
+        <item>Feed a hungry street dog</item>
+        <item>Give a sincere compliment today</item>
+        <item>Call a family member today</item>
+        <item>Pick up litter near you</item>
+        <item>Hold the door for someone</item>
+        <item>Send someone a thank you</item>
+        <item>Help someone carry heavy bags</item>
+        <item>Give a warm genuine smile</item>
+        <item>Write a positive online comment</item>
+        <item>Let someone go ahead today</item>
+    </string-array>
+
 </resources>
